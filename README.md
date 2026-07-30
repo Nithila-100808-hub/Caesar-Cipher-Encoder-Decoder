@@ -96,6 +96,12 @@ No build step, no installs, no dependencies.
 
 ---
 
+## 📸 Project Preview
+
+![Caesar Cipher Screenshot](Screenshot 2026-07-30 230133.png)
+
+---
+
 ## 🎓 Why This Project Is a Good Cybersecurity Mini-Project
 
 - Demonstrates a **foundational classical cipher** used as the entry point

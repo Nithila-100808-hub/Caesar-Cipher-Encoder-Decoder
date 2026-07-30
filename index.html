@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caesar Cipher | Encoder &amp; Decoder</title>
+  <meta name="description" content="A professional Caesar Cipher encoder and decoder built with vanilla HTML, CSS and JavaScript." />
+
+  <!-- Google Font: JetBrains Mono for a terminal / cybersecurity feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Decorative animated grid background -->
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <div class="app">
+
+    <!-- ============ HEADER ============ -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">&#128274;</span>
+        <div>
+          <h1 class="brand-title">CAESAR<span class="brand-accent">_CIPHER</span></h1>
+          <p class="brand-subtitle">Shift-based encryption &middot; Classical cryptography lab</p>
+          <p class="subtitle">
+    Learn Classical Cryptography with Caesar Cipher
+  </p>
+        </div>
+      </div>
+      <div class="status-pill" id="statusPill">
+        <span class="status-dot"></span>
+        <span id="statusText">SYSTEM READY</span>
+      </div>
+    </header>
+
+    <!-- ============ MAIN CARD ============ -->
+    <main class="panel glass">
+
+      <!-- Mode Switch: Encode / Decode -->
+      <div class="mode-switch" role="tablist" aria-label="Cipher mode">
+        <button class="mode-btn active" id="encodeModeBtn" role="tab" aria-selected="true">
+          <span class="mode-icon">&#8594;</span> ENCODE
+        </button>
+        <button class="mode-btn" id="decodeModeBtn" role="tab" aria-selected="false">
+          <span class="mode-icon">&#8592;</span> DECODE
+        </button>
+      </div>
+
+      <!-- Input Section -->
+      <section class="field-group">
+        <div class="field-label-row">
+          <label for="inputText">Input Text</label>
+          <span class="char-counter" id="inputCounter">0 characters</span>
+        </div>
+        <textarea
+          id="inputText"
+          class="text-area"
+          placeholder="Type or paste your message here..."
+          spellcheck="false"
+          rows="5"
+        ></textarea>
+      </section>
+
+      <!-- Shift Value + Actions Row -->
+      <section class="controls-row">
+        <div class="field-group shift-group">
+          <label for="shiftInput">Shift Value <span class="range-hint">(1&ndash;25)</span></label>
+          <div class="shift-input-wrapper">
+            <input
+              type="number"
+              id="shiftInput"
+              class="shift-input"
+              min="1"
+              max="25"
+              value="3"
+              inputmode="numeric"
+            />
+            <input
+              type="range"
+              id="shiftSlider"
+              class="shift-slider"
+              min="1"
+              max="25"
+              value="3"
+            />
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="processBtn" class="btn btn-primary">
+            <span id="processBtnLabel">Encode</span>
+          </button>
+          <button id="clearBtn" class="btn btn-ghost">Clear</button>
+        </div>
+      </section>
+
+      <!-- Error Message -->
+      <p class="error-message" id="errorMessage" role="alert"></p>
+
+      <!-- Output Section -->
+      <section class="field-group">
+        <div class="field-label-row">
+          <label for="outputText">Output Text</label>
+          <span class="char-counter" id="outputCounter">0 characters</span>
+        </div>
+        <textarea
+          id="outputText"
+          class="text-area output-area"
+          placeholder="Your result will appear here..."
+          spellcheck="false"
+          rows="5"
+          readonly
+        ></textarea>
+        <button id="copyBtn" class="btn btn-copy">
+          <span id="copyBtnLabel">Copy Output</span>
+        </button>
+      </section>
+
+    </main>
+
+    <!-- ============ INFO / HOW IT WORKS ============ -->
+    <section class="info-panel glass">
+      <h2 class="info-title">How the Caesar Cipher Works</h2>
+      <p class="info-text">
+        Each alphabetic character in your message is shifted forward (encode) or backward (decode)
+        by a fixed number of positions in the alphabet &mdash; the <strong>shift value</strong>.
+        Letter case is preserved, and numbers, spaces, and punctuation are left untouched.
+      </p>
+      <div class="example-row">
+        <div class="example-box">
+          <span class="example-label">Plain</span>
+          <code>HELLO WORLD</code>
+        </div>
+        <div class="example-arrow">shift +3 &#8594;</div>
+        <div class="example-box">
+          <span class="example-label">Cipher</span>
+          <code>KHOOR ZRUOG</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="app-footer">
+      <p>Built with HTML, CSS &amp; JavaScript &mdash; no frameworks, no dependencies.</p>
+    </footer>
+
+  </div>
+
+  <!-- Toast for copy confirmation -->
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+
+  <footer>
+    <p>Developed by Nithila | Caesar Cipher Cybersecurity Mini Project 2026</p>
+  </footer>
+</body>
+</html>
